@@ -11,7 +11,7 @@ sort.addEventListener('click', ()=>{
     let listItem = document.querySelectorAll('.list li')
     let sorted = [...listItem].sort((a, b)=> a.innerHTML - b.innerHTML);
     // console.log([...sorted]);
-    ul.innerHTML = ''
+    ul.innerText = ''
     console.log([...listItem]);
 
     // console.log(listItem)

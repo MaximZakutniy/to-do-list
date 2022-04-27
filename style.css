@@ -103,19 +103,6 @@ ul li.checked {
     color: rgb(201, 9, 9);
     text-decoration: line-through;
 }
-/* ul li.checked::before {
-    content: '';
-    display: flex;
-    flex-direction: row;
-    border-color: rgb(43, 2, 2);
-    border-style: solid;
-    border-width: 0 2px 2px 0;
-    top: 10px;
-    left: 16px;
-    transform: rotate(45deg);
-    height: 15px;
-    width: 7px;
-} */
 .close {
     width: 20px;
     border: 1px solid #C4C4C4;
