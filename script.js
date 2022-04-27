@@ -2,9 +2,26 @@ let ul = document.querySelector('.list')
 let divLict = document.querySelector('.list-container')
 let button = document.querySelector('.button')
 let input = document.querySelector('.taskName-input');
+let sort = document.querySelector('.sort')
 
-let array = [];
-console.log(array)
+// let array = [];
+// console.log(array)
+// кнопка сортировки
+sort.addEventListener('click', ()=>{
+    let listItem = document.querySelectorAll('.list li')
+    let sorted = [...listItem].sort((a, b)=> a.innerHTML - b.innerHTML);
+    // console.log([...sorted]);
+    ul.innerHTML = ''
+    console.log([...listItem]);
+
+    // console.log(listItem)
+    // let li = document.createElement('li');
+    // sorted.forEach(i => document.createElement('li').append(i))
+    sorted.forEach((i)=>{
+        document.querySelector('.list').append(i)
+    })
+    
+})
 
 input.addEventListener('keyup', (event)=>{
     if (event.key === 'Enter') {
@@ -17,16 +34,16 @@ ul.addEventListener('click', function (ev) {
     if(ev.target.tagName === "LI") {
         if (ev.target.classList.contains('checked') === false) {
             ev.target.className = 'checked';
-            console.log('class chek');
+            // console.log('class chek');
             return;
         }
         ev.target.classList.remove('checked')
-        console.log('class no')
+        // console.log('class no')
     //    console.log(ev.target.classList.contains('checked'))
         
     } 
     // ev.target.classList.contains('checked') === 'true' ? ev.target.className = 'checked' : ev.target.classList.remove('checked')
-    if(ev.target.tagName === "SPAN") {
+    if(ev.target.tagName === "DIV") {
        let div = ev.target.parentElement;
        div.remove();
         // if(document.querySelector('li').tagName !== 'li'){
@@ -43,19 +60,18 @@ function newElement() {
     // let t = document.createTextNode(inputValue);
     // console.log(inputValue)
     // console.log(t)
-    array.push(inputValue);
+    // array.push(inputValue);
     // console.log(array)
-    li.append(array.pop());
-    // li.append(inputValue);
+    li.append(inputValue);
     if(inputValue == "") {
-       alert("Введите ваше дело!");
+       alert("Введите элемент списка!");
     } else {
        document.querySelector('.list').appendChild(li);
     }
     document.querySelector('.taskName-input').value = "";
-    let span = document.createElement('span');
+    let div = document.createElement('div');
     let txt = document.createTextNode("x");
-    span.className = "close";
-    span.appendChild(txt);
-    li.appendChild(span);
+    div.className = "close";
+    div.appendChild(txt);
+    li.appendChild(div);
 }
