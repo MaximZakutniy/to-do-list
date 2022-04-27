@@ -45,6 +45,7 @@ h1{
 .list-container{
     display: none;
     text-align: left;
+    max-height: 170px;
 }
 .taskName-input{
     height: 40px;
@@ -87,6 +88,8 @@ ul {
     padding: 0;
     list-style: none;
     border-radius: 10px;
+    max-height: 170px;
+    overflow-y: scroll;
 }
 ul li {
     display: flex;
