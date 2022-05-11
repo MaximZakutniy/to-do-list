@@ -13,7 +13,7 @@ function clickSortButton () {
 let listItems = document.querySelectorAll('.list li'); //находим все элементы 
 array.sort(compareList);
 console.log('сортированный массив: ', array)
-console.log(listItems);
+// console.log(listItems);
 listItems.forEach((element, i, arr) => {
       arr[i].innerHTML = ''; //очистка каждого элемента
       arr[i].innerHTML = array[i]; //вставляем значение из отсортированного массива
@@ -70,6 +70,12 @@ ul.addEventListener('click', function (ev) {
     } 
     if(ev.target.tagName === "DIV") { // удаляем елемент
         let div = ev.target.parentElement; // родитель
+        console.log(div.innerText)
+        let elDeleteIndex = array.findIndex((el)=> {el == div.innerText})
+        console.log(elDeleteIndex)
+
+        array.slice(elDeleteIndex, 1)
+        
         div.remove();
          // нужно добавить удаление из массива
         // сделать проверку, если массив пуст, то divLict.style.display = 'none'
