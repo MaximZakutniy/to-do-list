@@ -70,13 +70,15 @@ ul.addEventListener('click', function (ev) {
     } 
     if(ev.target.tagName === "DIV") { // удаляем елемент
         let div = ev.target.parentElement; // родитель
-        console.log(div.innerText)
-        let elDeleteIndex = array.findIndex((el)=> {el == div.innerText})
+        let divText = div.innerText.slice(0,-2)
+        console.log(divText)
+        let elDeleteIndex = array.findIndex((el) => el == divText);
         console.log(elDeleteIndex)
 
-        array.slice(elDeleteIndex, 1)
+        array.slice(elDeleteIndex,1)
+        console.log('массив после удаления: ', array)
+        // div.remove();
         
-        div.remove();
          // нужно добавить удаление из массива
         // сделать проверку, если массив пуст, то divLict.style.display = 'none'
     }
@@ -94,7 +96,7 @@ function newElement() {
         document.querySelector('.list').appendChild(li);
     }
     array.push(input.value);
-    console.log(array)
+    // console.log(array)
     document.querySelector('.taskName-input').value = "";
     let div = document.createElement('div');
     let txt = document.createTextNode("x");
