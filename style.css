@@ -55,8 +55,32 @@ h1{
     /* font-weight: 400; */
 }
 .sort-images{
-    margin-left: 15rem;
+    padding-left: 280px;
+    /* margin-left: 15rem; */
     /* background: rebeccapurple */
+}
+.sort{
+    background-image: url(/img/Group\ 92\ \(1\).svg);
+    border: 0;
+    width: 26px;
+    height: 15px;
+    margin-bottom: 12px;
+    /* filter: greyscale(100%); */
+}
+.sort:hover{
+    filter: brightness(0%); 
+    cursor: pointer;
+}
+.sort-reverse{
+    background-image: url(/img/Group\ 90.svg);
+    border: 0;
+    width: 26px;
+    height: 15px;
+    margin-bottom: 12px;
+}
+.sort-reverse:hover{
+    filter: brightness(0%); 
+    cursor: pointer;
 }
 .button{
     margin: auto;
@@ -80,9 +104,9 @@ h1{
 .textButton{
     padding-left: 20px;
 }
-img {
+/* img {
     filter: greyscale(100%);
-    }
+    } */
 ul {
     margin: 0;
     padding: 0;
@@ -124,10 +148,10 @@ ul li.checked {
     background-color: #7a51e9;
     color: white;
 }
-img:hover {
+/* img:hover {
     filter: brightness(0%); 
     cursor: pointer;
-    }
+    } */
 .button:hover{
     background-color: #833AE0;
 }

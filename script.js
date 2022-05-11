@@ -4,28 +4,58 @@ let button = document.querySelector('.button')
 let input = document.querySelector('.taskName-input');
 let sort = document.querySelector('.sort')
 
-// let array = [];
-// console.log(array)
+let array = [];
 // кнопка сортировки
-sort.addEventListener('click', ()=>{
-    let listItem = document.querySelectorAll('.list li')
-    let sorted = [...listItem].sort((a, b)=> a.innerHTML - b.innerHTML);
-    // console.log([...sorted]);
-    ul.innerText = ''
-    console.log([...listItem]);
+sort.addEventListener('click', clickSortButton)
 
-    // console.log(listItem)
-    // let li = document.createElement('li');
-    // sorted.forEach(i => document.createElement('li').append(i))
-    sorted.forEach((i)=>{
-        document.querySelector('.list').append(i)
-    })
-    
-})
+function clickSortButton () {
+    if (divLict.style.display == "block"){
+let listItems = document.querySelectorAll('.list li'); //находим все элементы 
+array.sort(compareList);
+console.log('сортированный массив: ', array)
+console.log(listItems);
+listItems.forEach((element, i, arr) => {
+      arr[i].innerHTML = ''; //очистка каждого элемента
+      arr[i].innerHTML = array[i]; //вставляем значение из отсортированного массива
+      let div = document.createElement('div');
+    div.className = "close";
+    div.innerText = "X"; 
+    arr[i].append(div);
+  })
 
+  sort.classList = sort.classList == 'sort' 
+  ? 'sort-reverse' 
+  : 'sort';
+}else {
+    return;
+  }
+}
+
+function compareList (a,b) { 
+   //проверяем на класс
+    if(sort.classList == 'sort'){
+        if (a < b) {
+            return -1;
+          }
+          if (a > b) {
+            return 1;
+          }
+        
+          return 0;
+       }else{
+        if (a < b) {
+            return 1;
+          }
+          if (a > b) {
+            return -1;
+          }
+        
+          return 0; 
+       }
+    }
 input.addEventListener('keyup', (event)=>{
-    if (event.key === 'Enter') {
-        newElement()
+    if (event.key === 'Enter') { // добавляем в список по "Enter"
+        newElement() 
     }
 })
 button.addEventListener('click', newElement)
@@ -34,40 +64,31 @@ ul.addEventListener('click', function (ev) {
     if(ev.target.tagName === "LI") {
         if (ev.target.classList.contains('checked') === false) {
             ev.target.className = 'checked';
-            // console.log('class chek');
-            return;
+            return; // выделяем  по клику
         }
-        ev.target.classList.remove('checked')
-        // console.log('class no')
-    //    console.log(ev.target.classList.contains('checked'))
-        
+        ev.target.classList.remove('checked') // снимаем выделение
     } 
-    // ev.target.classList.contains('checked') === 'true' ? ev.target.className = 'checked' : ev.target.classList.remove('checked')
-    if(ev.target.tagName === "DIV") {
-       let div = ev.target.parentElement;
-       div.remove();
-        // if(document.querySelector('li').tagName !== 'li'){
-        //     divLict.style.display = 'none'
-        // }
+    if(ev.target.tagName === "DIV") { // удаляем елемент
+        let div = ev.target.parentElement; // родитель
+        div.remove();
+         // нужно добавить удаление из массива
+        // сделать проверку, если массив пуст, то divLict.style.display = 'none'
     }
 }, false);
+    
 
 function newElement() {
     divLict.style.display = 'block'
     let li = document.createElement('li');
-    // console.log(li)
     let inputValue = document.querySelector('.taskName-input').value;
-    // let t = document.createTextNode(inputValue);
-    // console.log(inputValue)
-    // console.log(t)
-    // array.push(inputValue);
-    // console.log(array)
     li.append(inputValue);
     if(inputValue == "") {
-       alert("Введите элемент списка!");
+        alert("Введите элемент списка!");
     } else {
-       document.querySelector('.list').appendChild(li);
+        document.querySelector('.list').appendChild(li);
     }
+    array.push(input.value);
+    console.log(array)
     document.querySelector('.taskName-input').value = "";
     let div = document.createElement('div');
     let txt = document.createTextNode("x");
